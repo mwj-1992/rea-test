@@ -1,0 +1,25 @@
+{
+  "name": "reatest",
+  "version": "1.0.0",
+  "description": "This is a REA test.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwj-1992/rea-test.git"
+  },
+  "keywords": [
+    "toy"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwj-1992/rea-test/issues"
+  },
+  "homepage": "https://github.com/mwj-1992/rea-test#readme",
+  "dependencies": {
+    "line-reader": "^0.4.0"
+  }
+}
