@@ -6,29 +6,31 @@ module.exports= function(){
     this._placed=false;
  
     this.move = ()=>{
-         if(!this._placed){
-             return ;
+        if(!this._placed){ // Means not issued yet
+            return ;
          }
          switch(this._face.toLowerCase()){
-             case 'north':
-                 this._position._y = (this._y-1>0?--this._y:this._y);
-                   break;
              case 'south':
-                 this._position._y = (this._y+1<4?++this._y:this._y);
+             this._position._y = (this._position._y-1>0?this._position._y-1:this._position._y);
+            console.log(this._position._y)
+
+                   break;
+             case 'north':
+                 this._position._y = (this._position._y+1<4?++this._position._y:this._position._y);
                  break;
-             case 'west':
-                 this._position.x = (this.x-1>0?--this.x:this.x);
+             case 'west': 
+                 this._position.x = (this._position.x-1>0?--this._position.x:this._position.x);
                  break;
              case 'east':
-                 this._position._x = (this._x+1<4?++this._x:this._x);
+                 this._position._x = (this._position._x+1<4?++this._position._x:this._position._x);
                  break;
              default:break;
          }
      }
  
      this.turn = (direction)=>{
-         if(!this._placed) return ;
-         //if left go back by the array;
+         if(!this._placed) return ; // ignore if the toy not issued yet
+         //if left go back ;
          var arr = ['west','north','east','south'];
          direction = direction.toLowerCase();
          var index = arr.indexOf(this._face.toLowerCase());
@@ -49,15 +51,14 @@ module.exports= function(){
          }
      };
  
-     this.place= (x,y,face)=>{
-         if(0<x<4 && 0<y<4 &&['west','north','east','south'].indexOf(face.toLowerCase)!=-1){// checking  parameters
-             this._position={_x: x,_y:y};
+     this.place= (x,y,face)=>{ // will set the toy place
+         x=parseInt(x);y = parseInt(y);
+            this._placed= true; //Means the toy issued already
+            this._position={_x: x,_y:y};
              this._face = face;
-             this._placed= true;
-         }
      };
  
-     this.report = ()=>{
+     this.report = ()=>{ //Printing the output on console
          console.log('Output : '+this._position._x+' , '+this._position._y+','+this._face);
      }
  }
